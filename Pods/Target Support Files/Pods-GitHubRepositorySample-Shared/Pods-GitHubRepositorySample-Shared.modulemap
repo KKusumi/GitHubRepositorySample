@@ -1,0 +1,6 @@
+framework module Pods_GitHubRepositorySample_Shared {
+  umbrella header "Pods-GitHubRepositorySample-Shared-umbrella.h"
+
+  export *
+  module * { export * }
+}

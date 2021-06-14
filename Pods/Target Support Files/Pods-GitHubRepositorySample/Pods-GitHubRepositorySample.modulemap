@@ -1,0 +1,6 @@
+framework module Pods_GitHubRepositorySample {
+  umbrella header "Pods-GitHubRepositorySample-umbrella.h"
+
+  export *
+  module * { export * }
+}
