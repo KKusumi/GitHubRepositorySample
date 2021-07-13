@@ -9,9 +9,9 @@ import Foundation
 import RxSwift
 import APIKit
 
-extension Session: ReactiveCompatible {}
+extension Session: ReactiveCompatible {} // ReactiveCompatible : Rx対応するよっていうprotocol
 
-extension Reactive where Base: Session {
+public extension Reactive where Base: Session {
     func response<T: Request>(_ request: T) -> Observable<T.Response> {
         return Observable<T.Response>.create { [weak base] observer -> Disposable in
             #if DEBUG

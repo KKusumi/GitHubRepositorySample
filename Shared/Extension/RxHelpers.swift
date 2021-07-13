@@ -10,13 +10,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-extension ObservableType where E: OptionalType {
-    func filterNil() -> Observable<E.Wrapped> {
-        return self.flatMap { element -> Observable<E.Wrapped> in
+extension ObservableType where Element: OptionalType {
+    func filterNil() -> Observable<Element.Wrapped> {
+        return self.flatMap { element -> Observable<Element.Wrapped> in
             guard let value = element.value else {
-                return Observable<E.Wrapped>.empty()
+                return Observable<Element.Wrapped>.empty()
             }
-            return Observable<E.Wrapped>.just(value)
+            return Observable<Element.Wrapped>.just(value)
         }
     }
 }
@@ -32,16 +32,17 @@ extension Optional: OptionalType {
     }
 }
 
-extension Reactive where Base: UIScrollView {
+public extension Reactive where Base: UIScrollView {
     var reachedBottom: ControlEvent<Void> {
-        let observable = contentOffset.flatMap{ [weak base] contentOffset -> Observable<Void> in
-            guard let scrollView = base else { return Observable.empty() }
-            
-            let visibleHeight = scrollView.frame.height - scrollView.contentInset.top - scrollView.contentInset.bottom
-            let y = contentOffset.y + scrollView.contentInset.top
-            let threshold = max(0.0, scrollView.contentSize.height - visibleHeight)
-            
-            return y < threshold ? Observable.just(()) : Observable.empty()
+        let observable = contentOffset
+            .flatMap { [weak base] contentOffset -> Observable<Void> in
+                guard let scrollView = base else { return Observable.empty() }
+
+                let visibleHeight = scrollView.frame.height - scrollView.contentInset.top - scrollView.contentInset.bottom
+                let y = contentOffset.y + scrollView.contentInset.top
+                let threshold = max(0.0, scrollView.contentSize.height - visibleHeight)
+
+                return y > threshold ? Observable.just(()) : Observable.empty()
         }
         return ControlEvent(events: observable)
     }
