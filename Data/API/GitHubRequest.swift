@@ -36,6 +36,9 @@ struct DecodableDataParser: DataParser {
     
 }
 
+// protocol→Impl作る
+// associatedtype：ジェネリクスと同じような感じ。準拠する側で型を指定する
+// where：条件付きの拡張
 extension GitHubRequest where Response: Decodable {
     public var dataParser: DataParser {
         return DecodableDataParser()

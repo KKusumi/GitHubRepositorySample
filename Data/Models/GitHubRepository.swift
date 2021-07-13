@@ -9,10 +9,10 @@ import Foundation
 
 public struct GitHubRepository: Decodable {
     let id: Int
-    let fullName: String
-    let description: String
+    public let fullName: String
+    public let description: String
     let stargazersCount: Int
-    let url: URL
+    public let url: URL
     
     private enum CodingKeys: String, CodingKey {
         case id

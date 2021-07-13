@@ -19,6 +19,7 @@ target 'GitHubRepositorySample' do
 
   target 'Presentation' do
     pod 'APIKit', '~> 5.0'
+    pod 'RxWebKit'
   end
 
   target 'Shared' do

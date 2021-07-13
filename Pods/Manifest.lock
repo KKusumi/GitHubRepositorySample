@@ -9,12 +9,16 @@ PODS:
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
+  - RxWebKit (2.0.0):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
 
 DEPENDENCIES:
   - Action
   - APIKit (~> 5.0)
   - RxCocoa (= 6.2.0)
   - RxSwift (= 6.2.0)
+  - RxWebKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -23,6 +27,7 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - RxWebKit
 
 SPEC CHECKSUMS:
   Action: 9891cd1b0a9047557d7e58e8dfae743e19d08197
@@ -30,7 +35,8 @@ SPEC CHECKSUMS:
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  RxWebKit: f1d621d914e230f8aff65a7f03c969dced8915eb
 
-PODFILE CHECKSUM: 6881eb83c542926d2009edaa8fe2d4e0d4fb68d2
+PODFILE CHECKSUM: 5521983c4b5158b312114044276472207208c47b
 
 COCOAPODS: 1.10.1
