@@ -8,9 +8,9 @@ target 'GitHubRepositorySample' do
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
   pod 'Action'
+  pod 'APIKit', '~> 5.0'
 
   target 'Data' do
-    pod 'APIKit', '~> 5.0'
   end
 
   target 'Domain' do
@@ -18,12 +18,10 @@ target 'GitHubRepositorySample' do
   end
 
   target 'Presentation' do
-    pod 'APIKit', '~> 5.0'
     pod 'RxWebKit'
   end
 
   target 'Shared' do
-    pod 'APIKit', '~> 5.0'
   end
 
 end

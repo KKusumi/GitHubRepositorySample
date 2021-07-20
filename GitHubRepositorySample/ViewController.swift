@@ -7,6 +7,7 @@
 
 import UIKit
 import Presentation
+import Domain
 
 class ViewController: UIViewController {
 
@@ -15,7 +16,7 @@ class ViewController: UIViewController {
         
     }
     @IBAction func onListScreenAction(_ sender: Any) {
-        let vc = ListViewController.make(with: ListViewModel(language: "RxSwift"))
+        let vc = ListViewController.make(with: ListViewModel(language: "RxSwift", listUseCase: ListUseCaseProvider.provide()))
         navigationController?.pushViewController(vc, animated: true)
     }
 }

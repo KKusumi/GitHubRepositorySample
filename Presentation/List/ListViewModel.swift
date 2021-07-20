@@ -12,6 +12,7 @@ import Action
 import Data
 import Shared
 import RxRelay
+import Domain
 
 // ViewController　-> ViewModel
 // ユーザーからのイベントなのでPublishSubject
@@ -50,14 +51,16 @@ public final class ListViewModel: ListViewModelType, ListViewModelInputs, ListVi
     let isLoading: Observable<Bool>
     let error: Observable<NSError>
     
+    private let listUseCase: ListUseCase
     private let page = BehaviorRelay<Int>(value: 1)
     private let searchAction: Action<Int, [GitHubRepository]>
     private let disposeBag = DisposeBag()
     
-    public init(language: String) {
+    public init(language: String, listUseCase: ListUseCase) {
+        self.listUseCase = listUseCase
         self.navigationBarTitle = Observable.just("\(language) Repositories")
         self.searchAction = Action { page in
-            return Session.shared.rx.response(GitHubApi.SearchRequest(language: language, page: page))
+            return listUseCase.get(language: language, page: page)
         }
         let response = BehaviorRelay<[GitHubRepository]>(value: [])
         self.gitHubRepositories = response.asObservable()

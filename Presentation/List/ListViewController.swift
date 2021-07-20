@@ -13,6 +13,7 @@ import Shared
 
 public final class ListViewController: UIViewController {
     
+    // ViewModelを引数に取ってListViewControllerを初期化する。
     public static func make(with viewModel: ListViewModel) -> ListViewController {
         let view = ListViewController.instantiate()
         view.viewModel = viewModel
